@@ -42,7 +42,7 @@ function hasUpdates(input, input2) {
 
 module.exports = class SimpleDiscordCrypt extends Plugin {
   startPlugin() {
-    if (hasUpdates(cryptPath, 'https://gitlab.com/An0/SimpleDiscordCrypt/raw/master/SimpleDiscordCrypt.user.js')) {
+    if (hasUpdates(cryptPath, 'https://gitlab.com/An0/SimpleDiscordCrypt/raw/master/SimpleDiscordCrypt.meta.js')) {
       console.log('Updating SimpleDiscordCrypt');
       download('https://gitlab.com/An0/SimpleDiscordCrypt/raw/master/SimpleDiscordCrypt.user.js', cryptPath);
     }
