@@ -1,2 +1,2 @@
 # PC-SimpleDiscordCryptLoader
-Loads SimpleDiscordCrypt as a Plugin!
+Loads SimpleDiscordCrypt as a Powercord Plugin!
