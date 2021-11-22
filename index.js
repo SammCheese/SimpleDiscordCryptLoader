@@ -23,7 +23,10 @@ function hasUpdates(input, input2) {
 
   https.get(input2, (res) => {
     res.on('data', (d) => {
-      if (d.toString('utf-8').includes('// @version')) version = d.toString('utf-8').split('// @version')[1].split('\n')[0];
+      if (d.toString('utf-8').includes('// @version')) {
+        version = d.toString('utf-8').split('// @version')[1].split('\n')[0];
+        version = parseInt(version.split('.').join(""));
+      }
       else return false;
     }).on('error', (e) => {
       console.error(e);
@@ -34,7 +37,8 @@ function hasUpdates(input, input2) {
   fs.readFile(input, 'utf8', (err, data) => {
     if (err) return true;
     if (data.includes('// @version')) {
-      const currentVersion = data.split('// @version')[1].split('\n')[0];
+      let currentVersion = data.split('// @version')[1].split('\n')[0];
+      currentVersion = parseInt(currentVersion.split('.').join(""));
       return version > currentVersion;
     }
   });
