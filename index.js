@@ -53,6 +53,8 @@ module.exports = class SimpleDiscordCrypt extends Plugin {
   }
 
   pluginWillUnload() {
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
   }
 };
