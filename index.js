@@ -16,7 +16,11 @@ const download = function (url, path) {
 };
 
 async function hasUpdates (input, input2) {
-  if (!fs.existsSync(input)) return true;
+  if (!fs.existsSync(input)) {
+    console.log(`%c[SimpleDiscordCrypt]%c SimpleDiscordCrypt not found, Downloading now...`, 'color: #4CFFCF; font-weight: bold;', 'color: #ffffff;');
+    download('https://gitlab.com/An0/SimpleDiscordCrypt/raw/master/SimpleDiscordCrypt.user.js', cryptPath);
+    return true;
+  };
 
   https.get(input2, (res) => {
     res.on('data', (d) => {
