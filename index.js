@@ -1,7 +1,11 @@
 const { Plugin } = require('powercord/entities');
+const { React } = require('powercord/webpack');
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
+
+const { open: openModal, close: closeModal } = require('powercord/modal');
+const { Confirm } = require('powercord/components/modal');
 
 const cryptPath = path.join(__dirname, 'components', 'SimpleDiscordCrypt.user.js');
 
@@ -59,8 +63,14 @@ module.exports = class SimpleDiscordCrypt extends Plugin {
   }
 
   pluginWillUnload() {
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
+    openModal(() => 
+      React.createElement(Confirm, {
+            header: 'Disabling SimpleDiscordCryptLoader requires a Restart to take effect',
+            confirmText:'Restart',
+            onConfirm: () => document.location.reload(),
+            cancelText: 'Cancel',
+            onCancel: closeModal
+      })
+    )
   }
 };
