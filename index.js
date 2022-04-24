@@ -52,7 +52,7 @@ async function hasUpdates (input, input2) {
 
 module.exports = class SimpleDiscordCrypt extends Plugin {
   async startPlugin () {
-    await hasUpdates(cryptPath, 'https://gitlab.com/An0/SimpleDiscordCrypt/raw/master/SimpleDiscordCrypt.meta.js').then(
+    await hasUpdates(cryptPath, 'https://gitlab.com/An0/SimpleDiscordCrypt/-/blob/master/SimpleDiscordCrypt.user.js').then(
       () => {
         fs.readFile(cryptPath, 'utf8', (err, data) => {
           if (err) return;
